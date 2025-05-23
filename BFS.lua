@@ -1,8 +1,7 @@
-
 function bfs()
     local start = {row = 1, col = 1}
     local goal = {row = 195, col = 20}
-    
+
     local direction = {
         {-1, 0},  -- up
         {-1, 1}, -- up right
@@ -26,7 +25,7 @@ function bfs()
     local visited = {}
     local parent = {}
     table.insert(queue, start)
-    visited[start.row * map_col + start.col] = true
+    visited[(start.row - 1) * map_col + start.col] = true
     -- parent[start.row * map_col + start.col] = nil
     while #queue > 0 do
         local current = table.remove(queue, 1)
@@ -36,7 +35,7 @@ function bfs()
             local cur = current
             while cur do
                 table.insert(path, 1, cur)
-                cur = parent[cur.row * map_col + cur.col]
+                cur = parent[(cur.row - 1) * map_col + cur.col]
             end
             return map, path
         end
@@ -46,10 +45,10 @@ function bfs()
             local new_row = current.row + dir[1]
             local new_col = current.col + dir[2]
 
-            if new_row >= 1 and new_row <= map_row and new_col >= 1 and new_col <= map_col and not visited[new_row * map_col + new_col] 
+            if new_row >= 1 and new_row <= map_row and new_col >= 1 and new_col <= map_col and not visited[(new_row - 1) * map_col + new_col] 
                                                                                             and map[new_row][new_col] == 0 then
-                visited[new_row * map_col + new_col] = true
-                parent[new_row * map_col + new_col] = current
+                visited[(new_row - 1) * map_col + new_col] = true
+                parent[(new_row - 1) * map_col + new_col] = current
                 table.insert(queue, {row = new_row, col = new_col})
             end
         end
