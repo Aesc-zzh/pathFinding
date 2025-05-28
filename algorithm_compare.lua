@@ -1,6 +1,6 @@
 local map_file = "map.bytes"
 local start = {row = 1, col = 1}
-local goal = {row = 222, col = 34}
+local goal = {row = 196, col = 20}
 
 local MapUtilClass = require("map_util")
 local map_util = MapUtilClass.new(map_file)
@@ -28,7 +28,7 @@ for i, find in ipairs(fuc) do
 end
 
 local csv_file = io.open(".\\algorithm_compare.csv", "w")
-csv_file:write("algorithm,time_cost,path_length\t\n")
+csv_file:write("algorithm,time_cost,Number of path nodes\t\n")
 local algorithms_name = {"BFS", "A*", "JPS", "A* with smoothing"}
 
 for i, name in ipairs(algorithms_name) do
