@@ -1,0 +1,4 @@
+algorithm,time_cost,path_length
+BFS,0.065000,230
+A*,0.002000,230
+JPS,0.003000,230

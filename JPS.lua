@@ -19,7 +19,7 @@ local function jump(visited, dx, dy, map_util, r, c, parent_dir, goal)
         ["-1,-1"] = {
             {-1, 0}, {-2, -1}
         }
-}
+    }
     -- 到达目标
     if r == goal.row and c == goal.col then
         return {row = r, col = c}
