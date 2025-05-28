@@ -1,4 +1,5 @@
-algorithm,time_cost,path_length
-BFS,0.066000,222
-A*,0.002000,222
-JPS,0.004000,222
+algorithm,time_cost,path_length	
+BFS,0.066000,222	
+A*,0.001000,222	
+JPS,0.004000,222	
+A* with smoothing,0.001000,3	

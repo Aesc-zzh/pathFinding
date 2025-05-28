@@ -33,6 +33,8 @@ elseif string.upper(algorithm) == "ASTAR" then
     findPath = require("ASTAR").Astar
 elseif string.upper(algorithm) == "JPS" then
     findPath = require("JPS").JPS
+elseif string.upper(algorithm) == "SMOOTHING" then
+    findPath = require("AstarWithSmoothing").AstarWithSmoothing
 else
     print("Invalid algorithm:" .. algorithm) 
     return
