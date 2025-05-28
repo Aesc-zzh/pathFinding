@@ -1,6 +1,6 @@
 local map_file = "map.bytes"
 local start = {row = 1, col = 1}
-local goal = {row = 230, col = 30}
+local goal = {row = 222, col = 34}
 
 local MapUtilClass = require("map_util")
 local map_util = MapUtilClass.new(map_file)
