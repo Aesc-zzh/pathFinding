@@ -1,32 +1,43 @@
-function printPath(filename, map, path)
-    local file = assert(io.open(filename, "w"))
-    local path_set = {}
-    if not path then
-        print("No path found")
-        file:close()
-        return
-    end
-    for _, p in ipairs(path) do
-        path_set[(p.row - 1) * #map[1] + p.col] = true
-    end
-    for r = 1, #map do
-        local cols = {}
-        for c = 1, #map[1] do
-            local idx = (r - 1) * #map[1] + c
-            if path_set[idx] then
-                cols[#cols + 1] = "x"
-            elseif map[r][c] ~= 0 then
-                cols[#cols + 1] = "#"
-            else
-                cols[#cols + 1] = " "
-            end
-        end
-        file:write(table.concat(cols) .. "\n")
-    end
-    file:close()
+local arg = {...}
+if #arg < 6 then
+    print("Usage: lua main.lua <algorithm> <map_file> <start_row> <start_col> <goal_row> <goal_col>")
+    return
 end
 
-fileName = "bfs_path.csv"
-local bfs = require("BFS")
-local map, path = bfs.bfs()
-printPath(fileName, map, path)
+local algorithm = arg[1]
+local map_file = arg[2]
+local start_row = tonumber(arg[3])
+local start_col = tonumber(arg[4])
+local goal_row = tonumber(arg[5])
+local goal_col = tonumber(arg[6])
+
+local MapUtilClass = require("map_util")
+local map_util = MapUtilClass.new(map_file)
+
+local start = {row = start_row, col = start_col}
+local goal = {row = goal_row, col = goal_col}
+
+if not map_util:isValidPosition(start.row, start.col) then
+    print("Invalid start position")
+    return
+end
+if not map_util:isValidPosition(goal.row, goal.col) then
+    print("Invalid goal position")
+    return
+end
+
+local findPath
+if string.upper(algorithm) == "BFS" then
+    findPath = require("BFS").bfs
+elseif string.upper(algorithm) == "ASTAR" then
+    findPath = require("ASTAR").Astar
+elseif string.upper(algorithm) == "JPS" then
+    findPath = require("JPS").JPS
+else
+    print("Invalid algorithm:" .. algorithm) 
+    return
+end
+
+local path = findPath(map_util, start, goal)
+local output_file = algorithm .. "_path.csv"
+map_util:printPath(output_file, path)
