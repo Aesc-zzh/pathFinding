@@ -1,7 +1,7 @@
 algorithm,time_cost,Number of path nodes	
-BFS,0.060000,196	
-Greedy BFS,0.056000,196	
-Dijkstra,0.085000,196	
-A*,0.003000,196	
-JPS,0.015000,195	
-A* with smoothing,0.004000,6	
+BFS,3.937200,714.600000	
+Greedy BFS,3.325600,955.000000	
+Dijkstra,2.123000,714.600000	
+A*,0.107200,716.200000	
+JPS,0.773800,681.400000	
+A* with smoothing,0.133600,128.400000	

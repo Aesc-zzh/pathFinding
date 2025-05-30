@@ -153,12 +153,12 @@ lua main.lua Astar map.bytes 1 1 10 10
 ## Benchmark Results
 | Algorithm       | Time Cost | Number of path nodes |
 |-----------------|----------|------------|
-| BFS             | 0.0618s  | 190        |
-| Greedy BFS      | 0.0562s  | 210        |
-| Dijkstra        | 0.078s   | 190        |
-| A*              | 0.0014s  | 190        |
-| JPS             | 0.0044s  | 189.8      | 
-| A* + Smoothing  | 0.001s   | 3.6        |
+| BFS             | 3.9372s  | 715        |
+| Greedy BFS      | 3.3256s  | 955        |
+| Dijkstra        | 2.1230s  | 715        |
+| A*              | 0.1072s  | 716        |
+| JPS             | 0.7738s  | 681        | 
+| A* + Smoothing  | 0.1336s  | 128        |
 
 ## Conclusion
 A*算法在大多数场景下表现最优，平衡了效率与路径质量。JPS算法在开放地图下表现优秀，但需要更多计算资源。路径平滑可显著改善视觉效果。
