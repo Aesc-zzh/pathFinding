@@ -16,6 +16,7 @@
 - Astar_path.csv: A*寻路结果
 - JPS_path.csv: JPS寻路结果
 - Astar_smooth_path.csv: A*弗洛伊德平滑优化结果
+- algorithm_compare.csv: 寻路算法比较结果
 
 ## Algorithm Analysis
 
@@ -95,6 +96,7 @@ A*算法结合了Dijkstra和Greedy BFS的优点，利用启发式函数（h）�
 **后续可以改进的点**：
 - 分层路径规划(HPA*)
 - 动态调整启发权重
+- goal 不可到达时，选择离goal最近的位置继续寻路
 
 ### 五、JPS (Jump Point Search)
 JPS是对A*的优化，专门针对网格地图。通过跳点规则，大幅减少扩展节点数量，极大提升效率。实现上较为复杂，但效果显著。
@@ -152,13 +154,13 @@ lua main.lua Astar map.bytes 1 1 10 10
 
 ## Benchmark Results
 | Algorithm       | Time Cost | Number of path nodes |
-|-----------------|----------|------------|
-| BFS             | 3.9372s  | 715        |
-| Greedy BFS      | 3.3256s  | 955        |
-| Dijkstra        | 2.1230s  | 715        |
-| A*              | 0.1072s  | 716        |
-| JPS             | 0.7738s  | 681        | 
-| A* + Smoothing  | 0.1336s  | 128        |
+|-----------------|-----------|------------|
+| BFS             | 3.9372s   | 715        |
+| Greedy BFS      | 3.3256s   | 955        |
+| Dijkstra        | 2.1230s   | 715        |
+| A*              | 0.1072s   | 716        |
+| JPS             | 0.7738s   | 681        | 
+| A* + Smoothing  | 0.1336s   | 128        |
 
 ## Conclusion
 A*算法在大多数场景下表现最优，平衡了效率与路径质量。JPS算法在开放地图下表现优秀，但需要更多计算资源。路径平滑可显著改善视觉效果。

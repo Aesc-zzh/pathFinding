@@ -1,4 +1,4 @@
--- 生成随机但有效的点对
+-- 根据提供的位置范围随机生成5组有效点对
 local function generate_valid_point_pairs(map_util, start_row, start_col, goal_row, goal_col, count)
     local rows = map_util.map_row
     local cols = map_util.map_col
@@ -41,7 +41,7 @@ local function generate_start_goal_point(map_util, start_row, start_col, goal_ro
     local rows = map_util.map_row
     local cols = map_util.map_col
     
-    -- 生成10组有效点对
+    -- 生成5组有效点对
     local test_cases = generate_valid_point_pairs(map_util, start_row, start_col, goal_row, goal_col, 5)
     
     for i, case in ipairs(test_cases) do
